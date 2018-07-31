@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="
+        http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
+
+	<!-- bean definitions here -->
+	<bean id="point" class="com.example.pkg.Point">
+		<property name="x" value="10" />
+		<property name="y" value="10" />
+		<constructor-arg index="0" value="25.6" />
+		<constructor-arg index="1" value="3.46" />
+	</bean>
+
+	<bean id="vector" class="com.example.pkg.Vector3">
+		<property name="x" value="70" />
+		<property name="y" value="70" />
+		<property name="z" value="70" />
+	</bean>
+
+	<bean id="calc" class="com.example.pkg.Calculator">
+		<constructor-arg index="0" value="100" />
+		<constructor-arg index="1" value="5" />
+	</bean>
+
+	<bean id="cat" class="com.example.pkg.Animal">
+		<property name="validator">
+			<idref bean= "dog"/>
+		</property>
+	</bean>
+
+
+	<bean id="dog" class="com.example.pkg.Animal">
+		<property name="speciesName" value="Dog" />
+		<property name="color" ref="white" />
+
+		<property name="size">
+			<bean class="com.example.pkg.Size">
+				<constructor-arg index="0" value="20.5" />
+				<constructor-arg index="1" value="123.45" />
+			</bean>
+		</property>
+	</bean>
+
+	<bean id="white" class="com.example.pkg.Color">
+		<constructor-arg value="white" />
+		<constructor-arg value="1" />
+	</bean>
+
+</beans>
