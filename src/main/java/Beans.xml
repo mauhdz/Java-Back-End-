@@ -5,30 +5,26 @@
         http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
 
 	<!-- bean definitions here -->
-	<bean id="point" class="com.example.pkg.Point">
-		<property name="x" value="10" />
-		<property name="y" value="10" />
-		<constructor-arg index="0" value="25.6" />
-		<constructor-arg index="1" value="3.46" />
-	</bean>
-
-	<bean id="vector" class="com.example.pkg.Vector3">
-		<property name="x" value="70" />
-		<property name="y" value="70" />
-		<property name="z" value="70" />
-	</bean>
-
-	<bean id="calc" class="com.example.pkg.Calculator">
-		<constructor-arg index="0" value="100" />
-		<constructor-arg index="1" value="5" />
-	</bean>
-
-	<bean id="cat" class="com.example.pkg.Animal">
-		<property name="validator">
-			<idref bean= "dog"/>
+	<bean id="validatorBean" class="com.example.pkg.BeanValidator">
+		<property name="animal1">
+			<idref bean="cat" />
+		</property>
+		<property name="animal2">
+			<idref bean="dog" />
 		</property>
 	</bean>
 
+	<bean id="cat" class="com.example.pkg.Animal">
+		<property name="speciesName" value="Cat" />
+		<property name="color" ref="black" />
+
+		<property name="size">
+			<bean class="com.example.pkg.Size">
+				<constructor-arg index="0" value="8.5" />
+				<constructor-arg index="1" value="12.45" />
+			</bean>
+		</property>
+	</bean>
 
 	<bean id="dog" class="com.example.pkg.Animal">
 		<property name="speciesName" value="Dog" />
@@ -42,9 +38,36 @@
 		</property>
 	</bean>
 
+	<bean id="mouse" class="com.example.pkg.Animal">
+		<property name="names">
+			<list>
+				<value>jerry</value>	
+				<value>mickey</value>
+				<value>gonzalez</value>				
+			</list>
+		</property>
+		<property name="food">
+			<map>
+				<entry key="1" value="hello"/>
+				<entry key="2" value="chocolates"/>
+				<entry key="3" value="coffee"/>	
+			</map>
+		</property>
+		
+	</bean>
+
+
+
+	<alias name="cat" alias="tom" />
+
 	<bean id="white" class="com.example.pkg.Color">
 		<constructor-arg value="white" />
 		<constructor-arg value="1" />
+	</bean>
+
+	<bean id="black" class="com.example.pkg.Color">
+		<constructor-arg value="black" />
+		<constructor-arg value="28" />
 	</bean>
 
 </beans>

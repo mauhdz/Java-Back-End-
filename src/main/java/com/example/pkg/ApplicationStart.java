@@ -8,32 +8,23 @@ public class ApplicationStart {
 	public static void main(String[] args) {
 		
 		ApplicationContext applicationContext=new ClassPathXmlApplicationContext("Beans.xml");
-//		Point p= (Point)applicationContext.getBean("point");
-//		System.out.println(p.getX());
-//		System.out.println(p.getY());
-//		
-//		Calculator c= (Calculator) applicationContext.getBean("calc");
-//		System.out.println(c.add());
-//		System.out.println(c.substract());
-//		System.out.println(c.divide());
-//		System.out.println(c.multiply());
 		
-		Animal animal= (Animal) applicationContext.getBean("dog");
+		Animal animal= (Animal) applicationContext.getBean("tom");
 		System.out.println("Species: "+ animal.getSpeciesName());
 		System.out.println("Height: "+ animal.getSize().getHeight());
 		System.out.println("Weight: "+ animal.getSize().getWeight());	
 		System.out.println("Color: "+ animal.getColor().getColorName());
-		//For idref which validates if the bean wit that name exists
-		//System.out.println("Validator: "+ animal.getValidator());
-
+		
+		BeanValidator val = (BeanValidator) applicationContext.getBean("validatorBean");
+		//This is from method toString on BeanValidator
+		System.out.println(val);
+		
+		Animal animal2= (Animal) applicationContext.getBean("mouse");
+		System.out.println(animal2.getNames());
+		
+		System.out.println(animal2.getFood());
 		
 		
-		
-//		Vector3 v= (Vector3)applicationContext.getBean("vector");
-//		System.out.println(v.getX());
-//		System.out.println(v.getY());
-//		System.out.println(v.getZ());
-
 	}
 
 }
