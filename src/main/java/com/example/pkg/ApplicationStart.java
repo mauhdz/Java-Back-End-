@@ -21,10 +21,9 @@ public class ApplicationStart {
 		
 		Animal animal2= (Animal) applicationContext.getBean("mouse");
 		System.out.println(animal2.getNames());
-		
 		System.out.println(animal2.getFood());
 		
-		
+		Animal animal3= (Animal) applicationContext.getBean("dog");
+		System.out.println(animal3.getColor().getColorName());		
 	}
-
 }

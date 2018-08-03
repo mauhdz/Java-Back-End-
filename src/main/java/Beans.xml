@@ -14,7 +14,7 @@
 		</property>
 	</bean>
 
-	<bean id="cat" class="com.example.pkg.Animal">
+	<bean id="cat" class="com.example.pkg.Animal" >
 		<property name="speciesName" value="Cat" />
 		<property name="color" ref="black" />
 
@@ -26,9 +26,9 @@
 		</property>
 	</bean>
 
-	<bean id="dog" class="com.example.pkg.Animal">
+	<bean id="dog" class="com.example.pkg.Animal" autowire="constructor" scope="prototype">
 		<property name="speciesName" value="Dog" />
-		<property name="color" ref="white" />
+		<property name= "color" ref="white"/>
 
 		<property name="size">
 			<bean class="com.example.pkg.Size">
@@ -60,14 +60,24 @@
 
 	<alias name="cat" alias="tom" />
 
-	<bean id="white" class="com.example.pkg.Color">
+	<bean id="white" class="com.example.pkg.Color" autowire-candidate="false" >
 		<constructor-arg value="white" />
 		<constructor-arg value="1" />
 	</bean>
 
-	<bean id="black" class="com.example.pkg.Color">
+	<bean id="black" class="com.example.pkg.Color" autowire-candidate="false">
 		<constructor-arg value="black" />
 		<constructor-arg value="28" />
 	</bean>
+	
+	<bean id="color" class="com.example.pkg.Color">
+		<constructor-arg value="azul" />
+		<constructor-arg value="24" />
+	</bean>
+	
+	<bean id="theConstructor" class="com.example.pkg.Customer">
+		
+	</bean>
+	
 
 </beans>

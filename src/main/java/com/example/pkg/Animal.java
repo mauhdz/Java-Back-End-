@@ -42,6 +42,12 @@ public class Animal {
 		this.color = color;
 		this.size = size;
 	}
+	
+	public Animal(Customer cust) {
+		
+		super();	
+		System.out.println("hey");
+	}
 
 	public Color getColor() {
 		return color;
